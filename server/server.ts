@@ -1,10 +1,21 @@
 import express from "express";
 import cors from "cors";
+import rateLimit from "express-rate-limit";
+import { error } from "node:console";
 
 const PORT: number = 3000;
+const limiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 5,
+  message: {
+    error: "you have reached your daily API call request",
+  },
+});
+
 const server = express();
 server.use(cors());
 server.use(express.json());
+server.use(limiter);
 
 server.get("/", (req, res) => {
   res.status(200).json({ message: "dismvowel is running on the port 3000" });
