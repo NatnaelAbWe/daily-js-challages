@@ -5,6 +5,7 @@
     "cors": "^2.8.6",
     "express": "^5.2.1"
   },
+  "module": "module",
   "devDependencies": {
     "@types/node": "^25.3.3",
     "ts-node": "^10.9.2"
