@@ -1,7 +1,12 @@
 import "./App.css";
+import { Practice } from "./Practice";
 
 function App() {
-  return <></>;
+  return (
+    <>
+      <Practice />
+    </>
+  );
 }
 
 export default App;
