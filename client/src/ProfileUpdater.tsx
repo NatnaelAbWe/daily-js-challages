@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ProfileUpdater() {
   const [user, setUser] = useState({
@@ -8,6 +8,10 @@ export default function ProfileUpdater() {
     role: "user",
     theme: "light",
   });
+
+  useEffect(() => {
+    localStorage.setItem("profile", JSON.stringify(user));
+  }, [user]);
 
   const updateField = (e) => {
     const { name, value } = e.target;
@@ -48,6 +52,8 @@ export default function ProfileUpdater() {
         placeholder="bio"
         value={user.bio}
         onChange={updateField}
+        id="bio"
+        disabled={100 - user.bio.length === 0}
       />
       <p>{100 - user.bio.length} characters remaining</p>
 
